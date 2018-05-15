@@ -7,6 +7,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Controller {
     @FXML
@@ -29,6 +34,26 @@ public class Controller {
     private int height;
     private int width;
     private AssocMemory memory;
+
+    public void chooseFileAndLoad(ActionEvent event) throws FileNotFoundException {
+        Window window = heightField.getScene().getWindow();
+
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showOpenDialog(window);
+        if (file != null)
+            load(file);
+    }
+
+    private void load(File file) throws FileNotFoundException {
+        Matrix toRemember = MatrixFileReader.load(file);
+
+        height = toRemember.getHeight();
+        width = toRemember.getWidth();
+
+        heightField.setText(String.valueOf(height));
+        widthField.setText(String.valueOf(width));
+        putMatrix(toRemember, toRememberPane);
+    }
 
     public void setSize(ActionEvent event) {
         height = Integer.parseInt(heightField.getText());

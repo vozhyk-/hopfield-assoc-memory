@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <GridPane xmlns="http://javafx.com/javafx/8.0.162" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hopfield_assoc_memory.Controller">
-    <Button text="Load matrix from file..." GridPane.columnIndex="0" GridPane.columnSpan="2" />
+    <Button text="Load matrix from file..." onAction="#chooseFileAndLoad" GridPane.columnIndex="0" GridPane.columnSpan="2" />
 
     <Label text="Width / Number of vectors:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
     <TextField fx:id="widthField" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
