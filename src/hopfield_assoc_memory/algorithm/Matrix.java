@@ -133,6 +133,12 @@ public class Matrix {
         return mult(vector.asMatrix()).asVector();
     }
 
+    public void forEach(ForEachFunction function) {
+        for (int i = 0; i < height; i++)
+            for (int j = 0; j < width; j++)
+                function.process(i, j, get(i, j));
+    }
+
     private Vector asVector() {
         if (width != 1)
             throw new IllegalArgumentException();
@@ -141,5 +147,10 @@ public class Matrix {
         for (int i = 0; i < height; i++)
             result.set(i, get(i, 0));
         return result;
+    }
+
+    @FunctionalInterface
+    public interface ForEachFunction {
+        void process(int i, int j, double value);
     }
 }

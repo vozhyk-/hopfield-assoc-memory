@@ -26,4 +26,8 @@ public class AssocMemory {
         else
             return -1;
     }
+
+    public Matrix getWeights() {
+        return weights;
+    }
 }
