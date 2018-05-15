@@ -2,6 +2,7 @@ package hopfield_assoc_memory;
 
 import hopfield_assoc_memory.algorithm.AssocMemory;
 import hopfield_assoc_memory.algorithm.Matrix;
+import hopfield_assoc_memory.algorithm.Vector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -20,7 +21,7 @@ public class Controller {
     GridPane weightsPane;
 
     @FXML
-    GridPane testVector;
+    GridPane testVectorPane;
 
     private int height;
     private int width;
@@ -38,6 +39,9 @@ public class Controller {
         Matrix toRemember = getMatrix(toRememberPane);
         memory = new AssocMemory(toRemember);
         putMatrix(memory.getWeights(), weightsPane);
+
+        Vector testVector = new Vector(height);
+        putMatrix(testVector.asMatrix(), testVectorPane);
     }
 
     private void putMatrix(Matrix toRemember, GridPane grid) {
