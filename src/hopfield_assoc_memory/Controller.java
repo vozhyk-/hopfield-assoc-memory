@@ -23,6 +23,9 @@ public class Controller {
     @FXML
     GridPane testVectorPane;
 
+    @FXML
+    GridPane outputVectorPane;
+
     private int height;
     private int width;
     private AssocMemory memory;
@@ -44,6 +47,12 @@ public class Controller {
         putMatrix(testVector.asMatrix(), testVectorPane);
     }
 
+    public void testVector(ActionEvent event) {
+        Vector inputVector = getVector(testVectorPane);
+        Vector outputVector = memory.apply(inputVector);
+        putMatrix(outputVector.asMatrix(), outputVectorPane);
+    }
+
     private void putMatrix(Matrix toRemember, GridPane grid) {
         grid.getChildren().clear();
         toRemember.forEach((i, j, value) -> {
@@ -56,15 +65,26 @@ public class Controller {
     private Matrix getMatrix(GridPane pane) {
         Matrix result = new Matrix(height, width);
         result.forEach((i, j, oldValue) ->
-                result.set(i, j, getCell(pane, i, j)));
+                result.set(i, j, getMatrixCell(pane, i, j)));
         return result;
     }
 
-    private double getCell(GridPane pane, int i, int j) {
-        return Double.parseDouble(getPaneCell(pane, i, j).getText());
+    private Vector getVector(GridPane pane) {
+        Vector result = new Vector(height);
+        result.forEach((i, oldValue) -> result.set(i, getVectorCell(pane, i)));
+        return result;
     }
 
-    private TextField getPaneCell(GridPane pane, int i, int j) {
+    private double getVectorCell(GridPane pane, int i) {
+        return Double.parseDouble(getCellField(pane, 1, i, 0).getText());
+    }
+
+    private double getMatrixCell(GridPane pane, int i, int j) {
+        return Double.parseDouble(getCellField(pane, width, i, j).getText());
+    }
+
+    private TextField getCellField(GridPane pane, int width, int i, int j) {
         return (TextField)pane.getChildren().get(i * width + j);
+
     }
 }

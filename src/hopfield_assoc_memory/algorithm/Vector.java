@@ -42,8 +42,7 @@ public class Vector {
 
     public Vector map(Function<Double, Double> function) {
         Vector result = new Vector(getLength());
-        for (int i = 0; i < getLength(); i++)
-            result.set(i, function.apply(get(i)));
+        forEach((i, value) -> result.set(i, function.apply(value)));
         return result;
     }
 
@@ -52,5 +51,15 @@ public class Vector {
         for (int i = 0; i < getLength(); i++)
             result.set(i, 0, get(i));
         return result;
+    }
+
+    public void forEach(ForEachFunction function) {
+        for (int i = 0; i < getLength(); i++)
+            function.process(i, get(i));
+    }
+
+    @FunctionalInterface
+    public interface ForEachFunction {
+        void process(int i, double value);
     }
 }

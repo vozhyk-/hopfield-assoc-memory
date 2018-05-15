@@ -14,20 +14,18 @@
     <Button text="Set size &amp; clear the input" onAction="#setSize" GridPane.columnSpan="2" GridPane.rowIndex="3" />
 
     <Label text="Input vectors:" GridPane.columnSpan="2" GridPane.rowIndex="4" />
-    <GridPane fx:id="toRememberPane" prefWidth="348.0" GridPane.columnSpan="2" GridPane.rowIndex="5">
-
-    </GridPane>
+    <GridPane fx:id="toRememberPane" prefWidth="348.0" GridPane.columnSpan="2" GridPane.rowIndex="5"/>
 
     <Label text="Neural network matrix:" GridPane.columnSpan="2" GridPane.rowIndex="6" />
     <Button text="Compute the matrix" onAction="#computeMemory" GridPane.columnSpan="2" GridPane.rowIndex="7" />
-    <GridPane fx:id="weightsPane" GridPane.columnSpan="2" GridPane.rowIndex="8">
+    <GridPane fx:id="weightsPane" GridPane.columnSpan="2" GridPane.rowIndex="8"/>
 
-    </GridPane>
+    <Label text="Input test vector:" GridPane.rowIndex="9" />
+    <GridPane fx:id="testVectorPane" GridPane.rowIndex="11"/>
 
-    <Label text="Input test vector:" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-    <GridPane fx:id="testVectorPane" GridPane.columnSpan="2" GridPane.rowIndex="10">
-
-    </GridPane>
+    <Label text="Output vector:" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+    <Button text="Compute it" onAction="#testVector" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+    <GridPane fx:id="outputVectorPane" GridPane.columnIndex="1" GridPane.rowIndex="11"/>
 
     <columnConstraints>
        <ColumnConstraints />

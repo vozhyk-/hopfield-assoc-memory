@@ -139,7 +139,7 @@ public class Matrix {
                 function.process(i, j, get(i, j));
     }
 
-    private Vector asVector() {
+    public Vector asVector() {
         if (width != 1)
             throw new IllegalArgumentException();
 
